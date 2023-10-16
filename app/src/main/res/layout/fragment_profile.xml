@@ -6,31 +6,31 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.myfinance.ui.home.HomeViewModel"/>
+            type="com.example.myfinance.ui.profile.ProfileViewModel" />
+
         <variable
-            name="homeFragment"
-            type="com.example.myfinance.ui.home.HomeFragment" />
+            name="profileFragment"
+            type="com.example.myfinance.ui.profile.ProfileFragment" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.home.HomeFragment">
+        tools:context=".ui.profile.ProfileFragment">
 
         <TextView
-            android:id="@+id/text_home"
+            android:id="@+id/text_profile"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
+            android:text="@{viewModel.text}"
             android:textAlignment="center"
             android:textSize="20sp"
-            android:text="@{viewModel.text}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
