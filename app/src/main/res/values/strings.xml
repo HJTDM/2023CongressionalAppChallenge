@@ -4,4 +4,12 @@
     <string name="title_search">Search</string>
     <string name="title_tools">Tools</string>
     <string name="title_profile">Profile</string>
+    <string name="sign_in">Sign in</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="register">Register</string>
+    <string name="click_to_register">Click to Register</string>
+    <string name="click_to_sign_in">Click to Sign In</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="signed_in_as">Signed in as</string>
 </resources>

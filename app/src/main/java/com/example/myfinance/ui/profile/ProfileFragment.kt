@@ -1,5 +1,6 @@
 package com.example.myfinance.ui.profile
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -15,6 +16,7 @@ class ProfileFragment : Fragment() {
     // onDestroyView.
     private val binding get() = _binding!!
     private val profileViewModel: ProfileViewModel by viewModels()
+    private lateinit var dataPasser: OnDataPass
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -38,4 +40,21 @@ class ProfileFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        dataPasser = context as OnDataPass
+    }
+
+    fun signOutUser(){
+        passData("signOut")
+    }
+
+    private fun passData(data: String){
+        dataPasser.onDataPass(data)
+    }
+}
+
+interface OnDataPass {
+    fun onDataPass(data: String)
 }
