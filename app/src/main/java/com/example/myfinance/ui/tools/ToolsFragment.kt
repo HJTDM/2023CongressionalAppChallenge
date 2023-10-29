@@ -1,11 +1,13 @@
 package com.example.myfinance.ui.tools
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.GridLayoutManager
 import com.example.myfinance.databinding.FragmentToolsBinding
 
 class ToolsFragment : Fragment() {
@@ -33,6 +35,15 @@ class ToolsFragment : Fragment() {
             viewModel = toolsViewModel
             toolsFragment = this@ToolsFragment
         }
+
+        val adapter = ToolsListAdapter{tool ->
+            val intent = Intent(activity, BudgetActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP)
+            intent.putExtra(BudgetActivity.TOOL, tool.name)
+            startActivity(intent)
+        }
+        binding.toolsRecyclerView.adapter = adapter
+        binding.toolsRecyclerView.layoutManager = GridLayoutManager(this.context, 2)
     }
 
     override fun onDestroyView() {

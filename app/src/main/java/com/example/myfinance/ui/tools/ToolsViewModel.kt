@@ -1,13 +1,9 @@
 package com.example.myfinance.ui.tools
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.myfinance.data.DataSource
+import com.example.myfinance.data.Tool
 
 class ToolsViewModel : ViewModel() {
-
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is tools Fragment"
-    }
-    val text: LiveData<String> = _text
+    val allTools: List<Tool> = DataSource.tools
 }

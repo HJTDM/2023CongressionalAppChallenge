@@ -38,6 +38,10 @@ class RegisterActivity : AppCompatActivity() {
         binding.signInNow.setOnClickListener{
             launchSignInActivity()
         }
+
+        if (supportActionBar != null) {
+            supportActionBar!!.hide()
+        }
     }
 
     private fun registerNewUser(){

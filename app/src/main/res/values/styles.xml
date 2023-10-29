@@ -5,4 +5,16 @@
         <item name="android:gravity">center_vertical</item>
         <item name="android:textStyle">bold</item>
     </style>
+
+    <style name="AppTheme.ActionBar" parent="Widget.Material3.ActionBar.Solid">
+        <item name="android:titleTextStyle">@style/AppTheme.ActionBar.TitleText</item>
+        <item name="background">@null</item>
+        <item name="android:height">150dp</item>
+        <item name="height">60dp</item>
+    </style>
+
+    <style name="AppTheme.ActionBar.TitleText" parent="TextAppearance.Material3.ActionBar.Title">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
 </resources>

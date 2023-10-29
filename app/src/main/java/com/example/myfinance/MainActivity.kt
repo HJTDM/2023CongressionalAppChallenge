@@ -4,6 +4,8 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.myfinance.databinding.ActivityMainBinding
 import com.example.myfinance.ui.profile.OnDataPass
@@ -32,12 +34,16 @@ class MainActivity : AppCompatActivity(), OnDataPass {
         ) as NavHostFragment
         val navController = navHostFragment.navController
         navView.setupWithNavController(navController)
-//        val appBarConfiguration = AppBarConfiguration(
-//            setOf(
-//                R.id.navigation_home, R.id.navigation_search, R.id.navigation_tools, R.id.navigation_profile
-//            )
-//        )
-//        setupActionBarWithNavController(navController, appBarConfiguration)
+        val appBarConfiguration = AppBarConfiguration(
+            setOf(
+                R.id.navigation_home, R.id.navigation_search, R.id.navigation_tools, R.id.navigation_profile
+            )
+        )
+        setupActionBarWithNavController(navController, appBarConfiguration)
+
+        if (supportActionBar != null) {
+            supportActionBar!!.hide()
+        }
 
         auth = Firebase.auth
         val currentUser = auth.currentUser
