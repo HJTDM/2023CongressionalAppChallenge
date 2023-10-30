@@ -12,4 +12,12 @@
     <string name="click_to_sign_in">Click to Sign In</string>
     <string name="sign_out">Sign Out</string>
     <string name="signed_in_as">Signed in as</string>
+    <string name="all_lessons">All Lessons</string>
+    <string name="unit_1">Unit 1: Introduction to Finance</string>
+    <string name="tools">Tools</string>
+    <string name="unit_2">Unit 2: The Economy</string>
+    <string name="unit_3">Unit 3: Banking</string>
+    <string name="unit_4">Unit 4: Taxes</string>
+    <string name="unit_5">Unit 5: Investing</string>
+    <string name="unit_6">Unit 6: Personal Finance</string>
 </resources>
