@@ -22,4 +22,16 @@ object DataSource {
         )
     )
 
+    val unit1Lessons: List<Lesson> = listOf(
+        Lesson(
+            R.drawable.tool_stock_market,
+            "What is Finance?"
+        ),
+        Lesson(
+            R.drawable.tool_stock_market,
+            "Why is Financial Literacy Important?"
+        )
+
+    )
+
 }

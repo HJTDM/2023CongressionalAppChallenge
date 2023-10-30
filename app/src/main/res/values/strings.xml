@@ -12,4 +12,5 @@
     <string name="click_to_sign_in">Click to Sign In</string>
     <string name="sign_out">Sign Out</string>
     <string name="signed_in_as">Signed in as</string>
+    <string name="tools">tools</string>
 </resources>

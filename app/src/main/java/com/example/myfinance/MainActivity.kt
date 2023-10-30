@@ -2,6 +2,7 @@ package com.example.myfinance
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.SearchView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
@@ -50,6 +51,7 @@ class MainActivity : AppCompatActivity(), OnDataPass {
         if (currentUser == null) {
             launchSignInActivity()
         }
+
     }
 
     override fun onDataPass(data: String) {
@@ -62,4 +64,6 @@ class MainActivity : AppCompatActivity(), OnDataPass {
         startActivity(signInIntent)
         finish()
     }
+
+
 }
