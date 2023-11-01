@@ -7,9 +7,7 @@ import android.view.ViewGroup
 import android.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.myfinance.R
 import com.example.myfinance.databinding.FragmentSearchBinding
 
 class SearchFragment : Fragment() {
@@ -40,60 +38,81 @@ class SearchFragment : Fragment() {
         binding.searchBar.clearFocus()
         binding.searchBar.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(p0: String?): Boolean {
-                if (p0 == null){
+                if (p0.isNullOrEmpty()){
                     searchViewModel.resetLessons()
+                    binding.allLessonsText.visibility = View.VISIBLE
                     return false
                 }
                 searchViewModel.filterLessons(p0)
+                binding.allLessonsText.visibility = View.GONE
                 return false
             }
 
             override fun onQueryTextChange(p0: String?): Boolean {
-                if (p0 == null){
+                if (p0.isNullOrEmpty()){
                     searchViewModel.resetLessons()
+                    binding.allLessonsText.visibility = View.VISIBLE
                     return true
                 }
                 searchViewModel.filterLessons(p0)
+                binding.allLessonsText.visibility = View.GONE
                 return true
             }
         })
 
-        val adapter = SearchListAdapter{
-        }
-        binding.unit1RecyclerView.adapter = adapter
-        searchViewModel.unit1Lessons.observe(this.viewLifecycleOwner){
-                items -> items.let{
-            adapter.submitList(it)
-        }
+        val unit1Adapter = SearchListAdapter{}
+        binding.unit1RecyclerView.adapter = unit1Adapter
+        searchViewModel.unit1Lessons.observe(this.viewLifecycleOwner){ lessons ->
+            lessons.let{
+                unit1Adapter.submitList(it)
+            }
         }
         binding.unit1RecyclerView.layoutManager = LinearLayoutManager(this.context)
-    }
 
-    fun hideText(unit: Int){
-        when(unit){
-            1 -> binding.unit1.visibility = View.GONE
-            2 -> binding.unit2.visibility = View.GONE
-            3 -> binding.unit3.visibility = View.GONE
-            4 -> binding.unit4.visibility = View.GONE
-            5 -> binding.unit5.visibility = View.GONE
-            6 -> binding.unit6.visibility = View.GONE
-            else -> {
-                print("Something REALLY wrong must have happened")
+        val unit2Adapter = SearchListAdapter{}
+        binding.unit2RecyclerView.adapter = unit2Adapter
+        searchViewModel.unit2Lessons.observe(this.viewLifecycleOwner){ lessons ->
+            lessons.let{
+                unit2Adapter.submitList(it)
             }
         }
-    }
-    fun showText(unit: Int){
-        when(unit){
-            1 -> binding.unit1.visibility = View.VISIBLE
-            2 -> binding.unit2.visibility = View.VISIBLE
-            3 -> binding.unit3.visibility = View.VISIBLE
-            4 -> binding.unit4.visibility = View.VISIBLE
-            5 -> binding.unit5.visibility = View.VISIBLE
-            6 -> binding.unit6.visibility = View.VISIBLE
-            else -> {
-                print("Something REALLY wrong must have happened")
+        binding.unit2RecyclerView.layoutManager = LinearLayoutManager(this.context)
+
+        val unit3Adapter = SearchListAdapter{}
+        binding.unit3RecyclerView.adapter = unit3Adapter
+        searchViewModel.unit3Lessons.observe(this.viewLifecycleOwner){ lessons ->
+            lessons.let{
+                unit3Adapter.submitList(it)
             }
         }
+        binding.unit3RecyclerView.layoutManager = LinearLayoutManager(this.context)
+
+        val unit4Adapter = SearchListAdapter{}
+        binding.unit4RecyclerView.adapter = unit4Adapter
+        searchViewModel.unit4Lessons.observe(this.viewLifecycleOwner){ lessons ->
+            lessons.let{
+                unit4Adapter.submitList(it)
+            }
+        }
+        binding.unit4RecyclerView.layoutManager = LinearLayoutManager(this.context)
+
+        val unit5Adapter = SearchListAdapter{}
+        binding.unit5RecyclerView.adapter = unit5Adapter
+        searchViewModel.unit5Lessons.observe(this.viewLifecycleOwner){ lessons ->
+            lessons.let{
+                unit5Adapter.submitList(it)
+            }
+        }
+        binding.unit5RecyclerView.layoutManager = LinearLayoutManager(this.context)
+
+        val unit6Adapter = SearchListAdapter{}
+        binding.unit6RecyclerView.adapter = unit6Adapter
+        searchViewModel.unit6Lessons.observe(this.viewLifecycleOwner){ lessons ->
+            lessons.let{
+                unit6Adapter.submitList(it)
+            }
+        }
+        binding.unit6RecyclerView.layoutManager = LinearLayoutManager(this.context)
     }
 
     override fun onDestroyView() {
