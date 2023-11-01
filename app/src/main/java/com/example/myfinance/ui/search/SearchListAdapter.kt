@@ -8,18 +8,17 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.myfinance.data.Lesson
 import com.example.myfinance.databinding.ItemLessonsItemBinding
 
+
 class SearchListAdapter(private val onItemClicked: (Lesson) -> Unit)
     : ListAdapter<Lesson, SearchListAdapter.SearchViewHolder>(DiffCallback) {
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): SearchViewHolder {
-        return SearchViewHolder(
-            ItemLessonsItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        )
+    ): SearchListAdapter.SearchViewHolder {
+        return SearchViewHolder(ItemLessonsItemBinding.inflate(LayoutInflater.from(parent.context)))
     }
 
-    override fun onBindViewHolder(holder: SearchViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: SearchListAdapter.SearchViewHolder, position: Int) {
         val current = getItem(position)
         holder.itemView.setOnClickListener{
             onItemClicked(current)
@@ -27,9 +26,6 @@ class SearchListAdapter(private val onItemClicked: (Lesson) -> Unit)
         holder.bind(current)
     }
 
-    override fun getItemCount(): Int {
-        return currentList.size
-    }
     class SearchViewHolder(private var binding: ItemLessonsItemBinding): RecyclerView.ViewHolder(binding.root){
         fun bind(lesson: Lesson){
             binding.apply{

@@ -24,167 +24,165 @@ object DataSource {
 
     val unit1Lessons: List<Lesson> = listOf(
         Lesson(
-            R.drawable.unit_1_lesson_1,
-            "Lesson 1: What is Finance?"
+            R.drawable.tool_stock_market,
+            "What is Finance?"
         ),
         Lesson(
-            R.drawable.unit_1_lesson_2,
-            "Lesson 2: Why is Financial Literacy Important?"
+            R.drawable.tool_stock_market,
+            "Why is Financial Literacy Important?"
         )
     )
 
     val unit2Lessons: List<Lesson> = listOf(
         Lesson(
-            R.drawable.unit_2_lesson_1,
-            "Lesson 1: What is Economics?"
+            R.drawable.tool_stock_market,
+            "What is Economics?"
         ),
         Lesson(
-            R.drawable.unit_2_lesson_2,
-            "Lesson 2: Resources"
+            R.drawable.tool_stock_market,
+            "Resources"
         ),
         Lesson(
-            R.drawable.unit_2_lesson_3,
-            "Lesson 3: Opportunity Cost and Economic Growth"
+            R.drawable.tool_stock_market,
+            "Opportunity Cost and Economic Growth"
         ),
         Lesson(
-            R.drawable.unit_2_lesson_4,
-            "Lesson 4: Trade"
+            R.drawable.tool_stock_market,
+            "Trade"
         ),
         Lesson(
-            R.drawable.unit_2_lesson_5,
-            "Lesson 5: Introduction to Supply and Demand"
+            R.drawable.tool_stock_market,
+            "Introduction to Supply and Demand"
         ),
         Lesson(
-            R.drawable.unit_2_lesson_6,
-            "Lesson 6: Demand"
+            R.drawable.tool_stock_market,
+            "Demand"
         ),
         Lesson(
-            R.drawable.unit_2_lesson_7,
-            "Lesson 7: Supply"
+            R.drawable.tool_stock_market,
+            "Supply"
         ),
         Lesson(
-            R.drawable.unit_2_lesson_8,
-            "Lesson 8: Market Equilibrium"
+            R.drawable.tool_stock_market,
+            "Market Equilibrium"
         ),
         Lesson(
-            R.drawable.unit_2_lesson_9,
-            "Lesson 9: Gross Domestic Product"
+            R.drawable.tool_stock_market,
+            "Gross Domestic Product"
         ),
         Lesson(
-            R.drawable.unit_2_lesson_10,
-            "Lesson 10: Inflation"
+            R.drawable.tool_stock_market,
+            "Inflation"
         ),
         Lesson(
-            R.drawable.unit_2_lesson_11,
-            "Lesson 11: Unemployment"
+            R.drawable.tool_stock_market,
+            "Unemployment"
         ),
         Lesson(
-            R.drawable.unit_2_lesson_12,
-            "Lesson 12: The Business Cycle"
+            R.drawable.tool_stock_market,
+            "Business Cycle"
         )
     )
-
     val unit3Lessons: List<Lesson> = listOf(
         Lesson(
             R.drawable.tool_stock_market,
-            "Lesson 1: What are Banks?"
+            "What are Banks?"
         ),
         Lesson(
             R.drawable.tool_stock_market,
-            "Lesson 2: Types of Bank Accounts"
+            "Types of Bank Accounts"
         ),
         Lesson(
             R.drawable.tool_stock_market,
-            "Lesson 3: Credit"
+            "Credit"
         ),
         Lesson(
             R.drawable.tool_stock_market,
-            "Lesson 4: Loans"
+            "Loans"
         ),
         Lesson(
             R.drawable.tool_stock_market,
-            "Lesson 5: Interest"
+            "Interest"
         )
     )
-
     val unit4Lessons: List<Lesson> = listOf(
         Lesson(
             R.drawable.tool_stock_market,
-            "Lesson 1: What are Taxes?"
+            "What are Taxes?"
         ),
         Lesson(
             R.drawable.tool_stock_market,
-            "Lesson 2: Consumption Tax"
+            "Consumption Tax"
         ),
         Lesson(
             R.drawable.tool_stock_market,
-            "Lesson 3: Income Tax"
+            "Income Tax"
         ),
         Lesson(
             R.drawable.tool_stock_market,
-            "Lesson 4: Payroll Tax"
+            "Payroll Tax"
         ),
         Lesson(
             R.drawable.tool_stock_market,
-            "Lesson 5: Property Tax"
+            "Property Tax"
         ),
         Lesson(
             R.drawable.tool_stock_market,
-            "Lesson 6: Capital Gains Tax"
+            "Capital Gains Tax"
         ),
         Lesson(
             R.drawable.tool_stock_market,
-            "Lesson 7: How To Do Taxes"
+            "How To Do Taxes"
         )
     )
-
     val unit5Lessons: List<Lesson> = listOf(
         Lesson(
             R.drawable.tool_stock_market,
-            "Lesson 1: What is Investing?"
+            "What is Investing?"
         ),
         Lesson(
             R.drawable.tool_stock_market,
-            "Lesson 2: The Stock Market"
+            "The Stock Market"
         ),
         Lesson(
             R.drawable.tool_stock_market,
-            "Lesson 3: Stocks"
+            "Stocks"
         ),
         Lesson(
             R.drawable.tool_stock_market,
-            "Lesson 4: Bonds"
+            "Bonds"
         ),
         Lesson(
             R.drawable.tool_stock_market,
-            "Lesson 5: Mutual Funds"
+            "Mutual Funds"
         ),
         Lesson(
             R.drawable.tool_stock_market,
-            "Lesson 6: Exchange-Traded Funds"
+            "Exchange-Traded Funds"
         ),
         Lesson(
             R.drawable.tool_stock_market,
-            "Lesson 7: Trading"
+            "Trading"
         )
     )
-
     val unit6Lessons: List<Lesson> = listOf(
         Lesson(
             R.drawable.tool_stock_market,
-            "Lesson 1: Budgets and Savings"
+            "Budgets and Savings"
         ),
         Lesson(
             R.drawable.tool_stock_market,
-            "Lesson 2: Insurance"
+            "Insurance"
         ),
         Lesson(
             R.drawable.tool_stock_market,
-            "Lesson 3: Mortgages"
+            "Mortgages"
         ),
         Lesson(
             R.drawable.tool_stock_market,
-            "Lesson 4: Retirement"
+            "Retirement"
         )
+
     )
+
 }

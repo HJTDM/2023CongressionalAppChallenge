@@ -21,185 +21,48 @@
 
         <SearchView
             android:id="@+id/search_bar"
+            android:iconifiedByDefault="false"
+            android:queryHint="Search Lessons..."
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="4dp"
             android:layout_marginTop="16dp"
-            android:layout_marginRight="4dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.core.widget.NestedScrollView
+        <TextView
+            android:id="@+id/all_courses"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="75dp"
+            android:layout_marginEnd="234dp"
+            android:text="All Courses"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/search_bar" />
+
+        <TextView
+            android:id="@+id/unit1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="161dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="210dp"
+            android:text="Unit 1: Introduction to Finance"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/all_courses" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/unit1_recycler_view"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/search_bar">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:id="@+id/all_lessons_text"
-                    style="?attr/textAppearanceHeadline4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
-                    android:text="@string/all_lessons"
-                    android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/unit_1_text"
-                    style="?attr/textAppearanceHeadline5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
-                    android:text="@string/unit_1"
-                    android:textStyle="bold"
-                    android:visibility="@{viewModel.unit1TitleVisibility}"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/all_lessons_text" />
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/unit_1_recycler_view"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="16dp"
-                    android:nestedScrollingEnabled="false"
-                    android:orientation="vertical"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    app:layout_constraintTop_toBottomOf="@id/unit_1_text" />
-
-                <TextView
-                    android:id="@+id/unit_2_text"
-                    style="?attr/textAppearanceHeadline5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
-                    android:text="@string/unit_2"
-                    android:textStyle="bold"
-                    android:visibility="@{viewModel.unit2TitleVisibility}"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/unit_1_recycler_view" />
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/unit_2_recycler_view"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="16dp"
-                    android:nestedScrollingEnabled="false"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    app:layout_constraintTop_toBottomOf="@id/unit_2_text" />
-
-                <TextView
-                    android:id="@+id/unit_3_text"
-                    style="?attr/textAppearanceHeadline5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
-                    android:text="@string/unit_3"
-                    android:textStyle="bold"
-                    android:visibility="@{viewModel.unit3TitleVisibility}"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/unit_2_recycler_view" />
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/unit_3_recycler_view"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="16dp"
-                    android:nestedScrollingEnabled="false"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    app:layout_constraintTop_toBottomOf="@id/unit_3_text" />
-
-                <TextView
-                    android:id="@+id/unit_4_text"
-                    style="?attr/textAppearanceHeadline5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
-                    android:text="@string/unit_4"
-                    android:textStyle="bold"
-                    android:visibility="@{viewModel.unit4TitleVisibility}"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/unit_3_recycler_view" />
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/unit_4_recycler_view"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="16dp"
-                    android:nestedScrollingEnabled="false"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    app:layout_constraintTop_toBottomOf="@id/unit_4_text" />
-
-                <TextView
-                    android:id="@+id/unit_5_text"
-                    style="?attr/textAppearanceHeadline5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
-                    android:text="@string/unit_5"
-                    android:textStyle="bold"
-                    android:visibility="@{viewModel.unit5TitleVisibility}"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/unit_4_recycler_view" />
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/unit_5_recycler_view"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="16dp"
-                    android:nestedScrollingEnabled="false"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    app:layout_constraintTop_toBottomOf="@id/unit_5_text" />
-
-                <TextView
-                    android:id="@+id/unit_6_text"
-                    style="?attr/textAppearanceHeadline5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
-                    android:text="@string/unit_6"
-                    android:textStyle="bold"
-                    android:visibility="@{viewModel.unit6TitleVisibility}"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/unit_5_recycler_view" />
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/unit_6_recycler_view"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="16dp"
-                    android:nestedScrollingEnabled="false"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    app:layout_constraintTop_toBottomOf="@id/unit_6_text" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-        </androidx.core.widget.NestedScrollView>
-
+            android:layout_height="wrap_content"
+            android:layout_marginStart="1dp"
+            android:layout_marginTop="2dp"
+            android:orientation="vertical"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintTop_toBottomOf="@+id/unit1" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
