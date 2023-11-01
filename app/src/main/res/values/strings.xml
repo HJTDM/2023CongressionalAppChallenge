@@ -20,4 +20,17 @@
     <string name="unit_4">Unit 4: Taxes</string>
     <string name="unit_5">Unit 5: Investing</string>
     <string name="unit_6">Unit 6: Personal Finance</string>
+    <string name="total_balance">Total Balance</string>
+    <string name="total_budget">Total Budget</string>
+    <string name="expenses">Expenses</string>
+    <string name="income">Income</string>
+    <string name="username">Username</string>
+    <string name="item_name">Item Name</string>
+    <string name="item_price">Item Price</string>
+    <string name="currency_symbol">$</string>
+    <string name="save">Save</string>
+    <string name="budget_planner">Budget Planner</string>
+    <string name="add_new_budget_item">Add New Budget Item</string>
+    <string name="budget_amount">Budget Amount</string>
+    <string name="total_budget_value">%1$s left out of %2$d</string>
 </resources>

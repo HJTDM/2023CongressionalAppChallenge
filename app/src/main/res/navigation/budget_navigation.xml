@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/budget_navigation"
+    app:startDestination="@id/budgetListFragment">
+
+    <fragment
+        android:id="@+id/budgetListFragment"
+        android:name="com.example.myfinance.ui.tools.budget.BudgetListFragment"
+        android:label="@string/budget_planner"
+        tools:layout="@layout/fragment_budget_list">
+        <action
+            android:id="@+id/action_budgetListFragment_to_addBudgetItemFragment"
+            app:destination="@id/addBudgetItemFragment" />
+        <action
+            android:id="@+id/action_budgetListFragment_to_setBudgetFragment"
+            app:destination="@id/setBudgetFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addBudgetItemFragment"
+        android:name="com.example.myfinance.ui.tools.budget.AddBudgetItemFragment"
+        android:label="@string/add_new_budget_item"
+        tools:layout="@layout/fragment_add_budget_item">
+        <action
+            android:id="@+id/action_addBudgetItemFragment_to_budgetListFragment"
+            app:destination="@id/budgetListFragment"
+            app:popUpTo="@id/budgetListFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/setBudgetFragment"
+        android:name="com.example.myfinance.ui.tools.budget.SetBudgetFragment"
+        android:label="Set Budget Amount"
+        tools:layout="@layout/fragment_set_budget">
+        <action
+            android:id="@+id/action_setBudgetFragment_to_budgetListFragment"
+            app:destination="@id/budgetListFragment"
+            app:popUpTo="@id/budgetListFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+</navigation>
