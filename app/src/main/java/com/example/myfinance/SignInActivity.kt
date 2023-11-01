@@ -1,15 +1,16 @@
 package com.example.myfinance
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.example.myfinance.databinding.ActivitySignInBinding
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth
+
 
 class SignInActivity : AppCompatActivity() {
 
@@ -67,6 +68,7 @@ class SignInActivity : AppCompatActivity() {
                 if (task.isSuccessful) {
                     binding.signInProgressBar.visibility = View.GONE
                     Toast.makeText(this, "Sign In Successful.", Toast.LENGTH_SHORT).show()
+
                     launchMainActivity()
                 } else {
                     binding.signInProgressBar.visibility = View.GONE
