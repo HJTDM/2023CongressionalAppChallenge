@@ -35,7 +35,6 @@ class SearchFragment : Fragment() {
             lifecycleOwner = viewLifecycleOwner
             searchFragment = this@SearchFragment
         }
-
         binding.searchBar.clearFocus()
         binding.searchBar.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(p0: String?): Boolean {

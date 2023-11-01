@@ -9,6 +9,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.myfinance.databinding.FragmentToolsBinding
+import com.example.myfinance.ui.tools.interest.CompoundInterestActivity
+import com.example.myfinance.ui.tools.interest.SimpleInterestActivity
+import com.example.myfinance.ui.tools.tax.TaxCalculatorActivity
 import com.example.myfinance.ui.tools.budget.BudgetActivity
 
 class ToolsFragment : Fragment() {

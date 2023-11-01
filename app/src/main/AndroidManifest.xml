@@ -3,6 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+
 
     <application
         android:allowBackup="true"
@@ -14,6 +17,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyFinance"
         tools:targetApi="31">
+        <activity
+            android:name=".ui.tools.tax.TaxCalculatorActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.tools.interest.CompoundInterestActivity"
+            android:exported="false"
+            android:label="@string/title_activity_compound_interest"
+            android:theme="@style/Theme.MyFinance" />
+        <activity
+            android:name=".ui.tools.interest.SimpleInterestActivity"
+            android:exported="false"
+            android:label="@string/title_activity_interest"
+            android:theme="@style/Theme.MyFinance" />
         <activity
             android:name=".ui.tools.budget.BudgetActivity"
             android:exported="false"/>

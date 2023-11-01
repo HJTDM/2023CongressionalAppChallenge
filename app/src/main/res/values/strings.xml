@@ -20,6 +20,15 @@
     <string name="unit_4">Unit 4: Taxes</string>
     <string name="unit_5">Unit 5: Investing</string>
     <string name="unit_6">Unit 6: Personal Finance</string>
+    <string name="title_activity_interest">InterestActivity</string>
+    <string name="title_activity_compound_interest">CompoundInterest</string>
+    <string-array name="compounded_array">
+        <item>Continually</item>
+        <item>Daily</item>
+        <item>Weekly</item>
+        <item>Monthly</item>
+        <item>Annually</item>
+    </string-array>
     <string name="total_balance">Total Balance</string>
     <string name="total_budget">Total Budget</string>
     <string name="expenses">Expenses</string>
