@@ -82,10 +82,10 @@ class SimpleInterestActivity : AppCompatActivity() {
         val time: Double = binding.inputInvestmentTime.text.toString().toDouble()
         val p1: Double = binding.inputPrincipalAmount.text.toString().toDouble()
         val principal = p1 * (1 + interest/100.0 * time)
-        binding.simplePrincipalAndInterest.text = "Principal and Interest: $${"%.2f".format(principal)}"
-        binding.simpleInterest.text = "Interest: $${"%.2f".format(principal-p1)}"
+        binding.simplePrincipalAndInterest.text = "Principal and Interest:\n $${"%.2f".format(principal)}"
+        binding.simpleInterest.text = "Interest:\n $${"%.2f".format(principal-p1)}"
         val monthly = (p1 * interest/1200.0)/(1 - (1 + interest/1200.0).pow(12.0 * time*-1))
-        binding.simpleMonthlyPayments.text = "Monthly Payments (if applicable): $${"%.2f".format(monthly)}"
+        binding.simpleMonthlyPayments.text = "Monthly Payments (if applicable):\n $${"%.2f".format(monthly)}"
     }
 
     override fun onSupportNavigateUp(): Boolean {

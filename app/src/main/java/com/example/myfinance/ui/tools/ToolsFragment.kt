@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.example.myfinance.databinding.FragmentToolsBinding
 import com.example.myfinance.ui.tools.interest.CompoundInterestActivity
 import com.example.myfinance.ui.tools.interest.SimpleInterestActivity
+import com.example.myfinance.ui.tools.stock.StockScreenerActivity
 import com.example.myfinance.ui.tools.tax.TaxCalculatorActivity
 
 class ToolsFragment : Fragment() {
@@ -40,9 +41,9 @@ class ToolsFragment : Fragment() {
         }
 
         val adapter = ToolsListAdapter{tool ->
-            val intent = Intent(activity, TaxCalculatorActivity::class.java)
+            val intent = Intent(activity, StockScreenerActivity::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP)
-            intent.putExtra(TaxCalculatorActivity.TOOL, tool.name)
+            intent.putExtra(StockScreenerActivity.TOOL, tool.name)
             startActivity(intent)
         }
         binding.toolsRecyclerView.adapter = adapter

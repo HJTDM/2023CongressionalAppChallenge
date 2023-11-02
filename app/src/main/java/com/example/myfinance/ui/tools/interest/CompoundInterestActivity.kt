@@ -143,8 +143,8 @@ class CompoundInterestActivity : AppCompatActivity() {
         {
             principal = p1 * E.pow(interest/100.0 * time)
         }
-        binding.compoundPrincipalAndInterest.text = "Principal and Interest: $${"%.2f".format(principal)}"
-        binding.compoundInterest.text = "Interest: $${"%.2f".format(principal-p1)}"
+        binding.compoundPrincipalAndInterest.text = "Principal and Interest:\n $${"%.2f".format(principal)}"
+        binding.compoundInterest.text = "Interest:\n $${"%.2f".format(principal-p1)}"
     }
 
     override fun onSupportNavigateUp(): Boolean {
