@@ -9,10 +9,10 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.myfinance.databinding.FragmentToolsBinding
-import com.example.myfinance.ui.tools.interest.CompoundInterestActivity
-import com.example.myfinance.ui.tools.interest.SimpleInterestActivity
-import com.example.myfinance.ui.tools.tax.TaxCalculatorActivity
 import com.example.myfinance.ui.tools.budget.BudgetActivity
+import com.example.myfinance.ui.tools.interest.InterestCalculatorActivity
+import com.example.myfinance.ui.tools.stock.StockScreenerActivity
+import com.example.myfinance.ui.tools.tax.TaxCalculatorActivity
 
 class ToolsFragment : Fragment() {
 
@@ -41,10 +41,33 @@ class ToolsFragment : Fragment() {
         }
 
         val adapter = ToolsListAdapter{tool ->
-            val intent = Intent(activity, BudgetActivity::class.java)
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP)
-            startActivity(intent)
+            if(tool.name == "Interest Calculator"){
+                val intent = Intent(activity, InterestCalculatorActivity::class.java)
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP)
+                startActivity(intent)
+            }
+            else if(tool.name == "Budget Planner"){
+                val intent = Intent(activity, BudgetActivity::class.java)
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP)
+                startActivity(intent)
+            }
+            else if(tool.name == "Tax Calculator"){
+                val intent = Intent(activity, TaxCalculatorActivity::class.java)
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP)
+                startActivity(intent)
+            }
+            else if(tool.name == "Stock Market"){
+                val intent = Intent(activity, StockScreenerActivity::class.java)
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP)
+                startActivity(intent)
+            }
+            else{
+                val intent = Intent(activity, BudgetActivity::class.java)
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP)
+                startActivity(intent)
+            }
         }
+
         binding.toolsRecyclerView.adapter = adapter
         binding.toolsRecyclerView.layoutManager = GridLayoutManager(this.context, 2)
     }

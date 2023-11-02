@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.lessons.unit2.lesson5.Unit2Lesson5QuizFragment">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/unit2_lesson5_quiz_title"
+                style="?attr/textAppearanceHeadline6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/unit_2_lesson_5_quiz"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/question_1_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="16dp"
+                android:text="@string/unit2_lesson5_quiz_question1_text"
+                android:textStyle="bold"
+                app:layout_constraintTop_toBottomOf="@id/unit2_lesson5_quiz_title" />
+
+            <RadioGroup
+                android:id="@+id/question_1_options"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:orientation="vertical"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/question_1_text">
+
+                <RadioButton
+                    android:id="@+id/question_1_option_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/unit2_lesson5_quiz_question1_option1" />
+
+                <RadioButton
+                    android:id="@+id/question_1_option_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/unit2_lesson5_quiz_question1_option2" />
+
+                <RadioButton
+                    android:id="@+id/question_1_option_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/unit2_lesson5_quiz_question1_option3" />
+
+                <RadioButton
+                    android:id="@+id/question_1_option_4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/unit2_lesson5_quiz_question1_option4" />
+
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/question_2_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="16dp"
+                android:text="@string/unit2_lesson5_quiz_question2_text"
+                android:textStyle="bold"
+                app:layout_constraintTop_toBottomOf="@id/question_1_options" />
+
+            <RadioGroup
+                android:id="@+id/question_2_options"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:checkedButton="@id/option_simple"
+                android:orientation="vertical"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/question_2_text">
+
+                <RadioButton
+                    android:id="@+id/question_2_option_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/unit2_lesson5_quiz_question2_option1" />
+
+                <RadioButton
+                    android:id="@+id/question_2_option_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/unit2_lesson5_quiz_question2_option2" />
+
+                <RadioButton
+                    android:id="@+id/question_2_option_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/unit2_lesson5_quiz_question2_option3" />
+
+                <RadioButton
+                    android:id="@+id/question_2_option_4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/unit2_lesson5_quiz_question2_option4" />
+
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/question_3_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="16dp"
+                android:text="@string/unit2_lesson5_quiz_question3_text"
+                android:textStyle="bold"
+                app:layout_constraintTop_toBottomOf="@id/question_2_options" />
+
+            <RadioGroup
+                android:id="@+id/question_3_options"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:checkedButton="@id/option_simple"
+                android:orientation="vertical"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/question_3_text">
+
+                <RadioButton
+                    android:id="@+id/question_3_option_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/unit2_lesson5_quiz_question3_option1" />
+
+                <RadioButton
+                    android:id="@+id/question_3_option_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/unit2_lesson5_quiz_question3_option2" />
+
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/question_4_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="16dp"
+                android:text="@string/unit2_lesson5_quiz_question4_text"
+                android:textStyle="bold"
+                app:layout_constraintTop_toBottomOf="@id/question_3_options" />
+
+            <RadioGroup
+                android:id="@+id/question_4_options"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:checkedButton="@id/option_simple"
+                android:orientation="vertical"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/question_4_text">
+
+                <RadioButton
+                    android:id="@+id/question_4_option_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/unit2_lesson5_quiz_question4_option1" />
+
+                <RadioButton
+                    android:id="@+id/question_4_option_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/unit2_lesson5_quiz_question4_option2" />
+
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/question_5_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="16dp"
+                android:text="@string/unit2_lesson5_quiz_question5_text"
+                android:textStyle="bold"
+                app:layout_constraintTop_toBottomOf="@id/question_4_options" />
+
+            <RadioGroup
+                android:id="@+id/question_5_options"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:checkedButton="@id/option_simple"
+                android:orientation="vertical"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/question_5_text">
+
+                <RadioButton
+                    android:id="@+id/question_5_option_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/unit2_lesson5_quiz_question5_option1" />
+
+                <RadioButton
+                    android:id="@+id/question_5_option_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/unit2_lesson5_quiz_question5_option2" />
+
+                <RadioButton
+                    android:id="@+id/question_5_option_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/unit2_lesson5_quiz_question5_option3" />
+
+                <RadioButton
+                    android:id="@+id/question_5_option_4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/unit2_lesson5_quiz_question5_option4" />
+
+            </RadioGroup>
+
+            <Button
+                android:id="@+id/submit_button"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/submit"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/question_5_options" />
+
+            <TextView
+                android:id="@+id/results"
+                style="?attr/textAppearanceBodyLarge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/submit_button"
+                tools:text="5 out of 5" />
+
+            <Button
+                android:id="@+id/return_to_home_button"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="24dp"
+                android:text="@string/return_to_home"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.502"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/results"
+                app:layout_constraintVertical_bias="1.0" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,27 +1,26 @@
-package com.example.myfinance.ui.tools.tax
+package com.example.myfinance.ui.tools.stock
 
+import android.content.Intent
 import android.net.ConnectivityManager
 import android.net.Network
 import android.net.NetworkCapabilities
-import android.net.NetworkInfo
 import android.net.NetworkRequest
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.webkit.WebView
-import android.widget.SeekBar
+import android.webkit.WebViewClient
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
-import com.example.myfinance.databinding.ActivityTaxCalculatorBinding
-import kotlin.math.pow
+import com.example.myfinance.databinding.ActivityStockScreenerBinding
 
-class TaxCalculatorActivity : AppCompatActivity() {
+class StockScreenerActivity : AppCompatActivity() {
     companion object {
         const val TOOL = "tool"
     }
-    private lateinit var binding: ActivityTaxCalculatorBinding
+
+    private lateinit var binding: ActivityStockScreenerBinding
     private var networkFlag: Boolean = false
 
     private val networkCallback = object : ConnectivityManager.NetworkCallback() {
@@ -37,7 +36,8 @@ class TaxCalculatorActivity : AppCompatActivity() {
             networkCapabilities: NetworkCapabilities
         ) {
             super.onCapabilitiesChanged(network, networkCapabilities)
-            val unmetered = networkCapabilities.hasCapability(NetworkCapabilities.NET_CAPABILITY_NOT_METERED)
+            val unmetered =
+                networkCapabilities.hasCapability(NetworkCapabilities.NET_CAPABILITY_NOT_METERED)
         }
 
         // lost network connection
@@ -56,23 +56,45 @@ class TaxCalculatorActivity : AppCompatActivity() {
             .addTransportType(NetworkCapabilities.TRANSPORT_WIFI)
             .addTransportType(NetworkCapabilities.TRANSPORT_CELLULAR)
             .build()
-        val connectivityManager = getSystemService(ConnectivityManager::class.java) as ConnectivityManager
+        val connectivityManager =
+            getSystemService(ConnectivityManager::class.java) as ConnectivityManager
         connectivityManager.requestNetwork(networkRequest, networkCallback)
 
-        binding = ActivityTaxCalculatorBinding.inflate(layoutInflater)
+        binding = ActivityStockScreenerBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        binding.taxCalculatorWebview.settings.javaScriptEnabled = true
-        if(networkFlag){
-            binding.taxCalculatorWebview.loadUrl("https://tipalti.com/sales-tax-calculator/")
-        }else{
-            Toast.makeText(this, "No Internet Connection.\nPlease Try Again At Another Time.", Toast.LENGTH_LONG).show()
+        binding.stockScreenerWebview.webViewClient = MyWebViewClient()
+        binding.stockScreenerWebview.settings.javaScriptEnabled = true
+        if (networkFlag) {
+            binding.stockScreenerWebview.loadUrl("https://finance.yahoo.com/")
+        } else {
+            Toast.makeText(
+                this,
+                "No Internet Connection.\nPlease Try Again At Another Time.",
+                Toast.LENGTH_LONG
+            ).show()
         }
 
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.title = "Tax Calculator"
+        supportActionBar?.title = "Stock Screener"
     }
 
+    private class MyWebViewClient : WebViewClient() {
+
+        override fun shouldOverrideUrlLoading(view: WebView?, url: String?): Boolean {
+            if (Uri.parse(url).host == "https://finance.yahoo.com/") {
+                // This is your website, so don't override. Let your WebView load
+                // the page.
+                return false
+            }
+            // Otherwise, the link isn't for a page on your site, so launch another
+            // Activity that handles URLs.
+            Intent(Intent.ACTION_VIEW, Uri.parse(url)).apply {
+                view?.context?.startActivity(this)
+            }
+            return true
+        }
+    }
 
     override fun onSupportNavigateUp(): Boolean {
         finish()

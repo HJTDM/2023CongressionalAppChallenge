@@ -6,7 +6,7 @@ object DataSource {
     val tools: List<Tool> = listOf(
         Tool(
             R.drawable.tool_budget_planner,
-            "Budget Tracker"
+            "Budget Planner"
         ),
         Tool(
             R.drawable.tool_tax_calculator,
@@ -86,23 +86,23 @@ object DataSource {
 
     val unit3Lessons: List<Lesson> = listOf(
         Lesson(
-            R.drawable.tool_stock_market,
+            R.drawable.unit_3_lesson_1,
             "Lesson 1: What are Banks?"
         ),
         Lesson(
-            R.drawable.tool_stock_market,
+            R.drawable.unit_3_lesson_2,
             "Lesson 2: Types of Bank Accounts"
         ),
         Lesson(
-            R.drawable.tool_stock_market,
+            R.drawable.unit_3_lesson_3,
             "Lesson 3: Credit"
         ),
         Lesson(
-            R.drawable.tool_stock_market,
+            R.drawable.unit_3_lesson_4,
             "Lesson 4: Loans"
         ),
         Lesson(
-            R.drawable.tool_stock_market,
+            R.drawable.unit_3_lesson_5,
             "Lesson 5: Interest"
         )
     )

@@ -8,12 +8,18 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.example.myfinance.data.BudgetItem
 import com.example.myfinance.databinding.ActivityMainBinding
 import com.example.myfinance.ui.profile.OnDataPass
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.database
 
 
 class MainActivity : AppCompatActivity(), OnDataPass {
@@ -21,6 +27,7 @@ class MainActivity : AppCompatActivity(), OnDataPass {
     private lateinit var binding: ActivityMainBinding
     private lateinit var signInIntent: Intent
     private lateinit var auth: FirebaseAuth
+    private lateinit var userDatabase: DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,11 +54,22 @@ class MainActivity : AppCompatActivity(), OnDataPass {
         }
 
         auth = Firebase.auth
+        userDatabase = auth.currentUser?.let { Firebase.database.reference.child("users").child(it.uid) }!!
+
+        userDatabase.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if (!snapshot.hasChild("lessons/unit2/lesson5")) {
+                    userDatabase.child("lessons").child("unit2").child("lesson5").setValue(0)
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {}
+        })
+
         val currentUser = auth.currentUser
         if (currentUser == null) {
             launchSignInActivity()
         }
-
     }
 
     override fun onDataPass(data: String) {

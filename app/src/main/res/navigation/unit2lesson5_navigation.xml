@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/unit2lesson5_navigation"
+    app:startDestination="@id/unit2Lesson5MainFragment">
+
+    <fragment
+        android:id="@+id/unit2Lesson5MainFragment"
+        android:name="com.example.myfinance.ui.lessons.unit2.lesson5.Unit2Lesson5MainFragment"
+        android:label="Introduction to Supply and Demand"
+        tools:layout="@layout/fragment_unit2_lesson5_main" >
+        <action
+            android:id="@+id/action_unit2Lesson5MainFragment_to_unit2Lesson5QuizFragment"
+            app:destination="@id/unit2Lesson5QuizFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/unit2Lesson5QuizFragment"
+        android:name="com.example.myfinance.ui.lessons.unit2.lesson5.Unit2Lesson5QuizFragment"
+        android:label="fragment_unit2_lesson5_quiz"
+        tools:layout="@layout/fragment_unit2_lesson5_quiz" >
+        <action
+            android:id="@+id/action_unit2Lesson5QuizFragment_to_unit2Lesson5MainFragment"
+            app:destination="@id/unit2Lesson5MainFragment"
+            app:popUpTo="@id/unit2Lesson5MainFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+</navigation>

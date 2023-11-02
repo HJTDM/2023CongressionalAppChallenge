@@ -20,14 +20,13 @@
     <string name="unit_4">Unit 4: Taxes</string>
     <string name="unit_5">Unit 5: Investing</string>
     <string name="unit_6">Unit 6: Personal Finance</string>
-    <string name="title_activity_interest">InterestActivity</string>
-    <string name="title_activity_compound_interest">CompoundInterest</string>
+    <string name="title_activity_interest">Interest Calculator</string>
     <string-array name="compounded_array">
-        <item>Continually</item>
-        <item>Daily</item>
-        <item>Weekly</item>
-        <item>Monthly</item>
         <item>Annually</item>
+        <item>Monthly</item>
+        <item>Weekly</item>
+        <item>Daily</item>
+        <item>Continually</item>
     </string-array>
     <string name="total_balance">Total Balance</string>
     <string name="total_budget">Total Budget</string>
@@ -42,4 +41,79 @@
     <string name="add_new_budget_item">Add New Budget Item</string>
     <string name="budget_amount">Budget Amount</string>
     <string name="total_budget_value">%1$s left out of %2$d</string>
+    <string name="interest_calculator">Interest Calculator</string>
+    <string name="principal_amount">Principal Amount</string>
+    <string name="interest_rate">Interest Rate:</string>
+    <string name="investment_time">Investment Time</string>
+    <string name="compounded">Compounded:</string>
+    <string name="interest">Interest:</string>
+    <string name="total">Total:</string>
+    <string name="interest_rate_percent">Interest Rate: %1$s%%</string>
+    <string name="calculate">Calculate</string>
+    <string name="simple">Simple</string>
+    <string name="compound">Compound</string>
+    <string name="interest_with_value">Interest: %1$s</string>
+    <string name="total_with_value">Total: %1$s</string>
+    <string name="piggy_bankers">Piggy Bankers</string>
+
+    <string name="unit2_lesson5_part1">
+        In our world, there are buyers and sellers of various goods and services; these people make up an overall <i>market</i>, a group of producers and consumers who exchange goods and services using a form of payment. More specifically, the market in the United States is a <b>competitive market</b>, where there are multiple buyers and sellers for the same good or service. In a competitive market, an individual’s actions usually have little effect on the price of a good or service.\n\nThe <b>supply and demand model</b> can give us a good insight into the behavior of a competitive market. There are five key parts of this model:\n
+        \n<ul>
+            \n\n<li>The demand curve</li>
+            \n\n<li>The supply curve</li>
+            \n\n<li>
+The set of factors that cause the demand curve to shift and the set of factors that cause the supply curve to shift (Explored in Lesson 6 and 7)
+    </li>
+            \n\n<li>
+The market equilibrium, which includes the equilibrium price and equilibrium quantity (Explored in Lesson 8)
+    </li>
+            \n\n<li>
+The way the market equilibrium changes when the supply curve or demand curve shifts (Explored in Lesson 8)
+    </li>
+        </ul>
+
+    </string>
+    <string name="unit2_lesson5_title">Lesson 5: Introduction to Supply and Demand</string>
+    <string name="demand">Demand</string>
+    <string name="unit2_lesson5_part2">
+        Let’s take an example: how many pounds of coffee beans do consumers want to buy in a year? While it might seem possible to take the cups of coffee sold each day by the weight of the coffee beans needed for one chocolate bar, and multiplying by 365, this does not explain how many pounds of coffee beans consumers <i>want</i> to buy.
+        \n\nGenerally, the quantity of a good demanded depends on the price. To find out how many pounds of coffee beans consumers want to buy, we can first make a table of how many pounds of coffee beans consumers would buy at different prices. This table can then be used to make a <i>demand curve</i>, which graphs the price of the good or service vs. the quantity demanded.
+    </string>
+    <string name="unit2_lesson5_part3">
+        The demand curve above has one key feature: <i>a downward slope</i>. Generally, higher prices for a good decrease the quantity demanded. This makes intuitive sense, as when prices are higher, a consumer is less likely to want to buy the good and turns to substitutes. This idea, where higher prices decrease the quantity demanded, is known as the <b>law of demand</b>.
+    </string>
+    <string name="supply">Supply</string>
+    <string name="unit2_lesson5_part4">
+        Around the world, some parts are better suited to growing coffee beans, and whether a producer wants to expand to these ideal locations depends on the amount of revenue they expect to get for their coffee beans. Similar to demand, the <b>quantity supplied</b> also depends on the price of the good in the market.
+        \n\nLike we did with the demand above, we can also make a table of the quantity of coffee beans supplied at different prices. These can also be used to make a <b>supply curve</b>. As the graph shows, the key feature of a supply curve is its upward slope. To make intuitive sense of this, consider a lawn mowing business in the neighborhood. If a consumer offers $5 for someone to mow their lawn, they may get a few people willing to do so, but if they offer $100, many more would be willing to mow their lawn. This idea, where the quantity of a good or service supplied by a producer increases as the price increases, is known as the <b>law of supply</b>.
+    </string>
+    <string name="unit2_lesson5_part5">
+        This concludes our introduction to supply and demand. In the next lessons, we will explore supply and demand in more detail, particularly how and why events in the market can shift the supply and demand curve.
+    </string>
+    <string name="take_the_assessment">Take the Assessment</string>
+    <string name="unit_2_lesson_5_quiz">Unit 2 Lesson 5 Quiz</string>
+    <string name="unit2_lesson5_quiz_question1_text">1. Which of the following is NOT true of a competitive market?</string>
+    <string name="unit2_lesson5_quiz_question1_option1">There are multiple buyers and sellers for the same good or service</string>
+    <string name="unit2_lesson5_quiz_question1_option2">The supply and demand model can describe the behavior of a competitive market</string>
+    <string name="unit2_lesson5_quiz_question1_option3">One buyer and seller of various goods or services makes up the market</string>
+    <string name="unit2_lesson5_quiz_question1_option4">An individual’s actions usually have little effect on the price of a good or service</string>
+    <string name="unit2_lesson5_quiz_question2_text">2. Which of the following is NOT a key part of the supply and demand model?</string>
+    <string name="unit2_lesson5_quiz_question2_option1">The market equilibrium</string>
+    <string name="unit2_lesson5_quiz_question2_option2">The supply curve</string>
+    <string name="unit2_lesson5_quiz_question2_option3">The aggregate price level</string>
+    <string name="unit2_lesson5_quiz_question2_option4">The way the market equilibrium changes due to supply or demand shifts</string>
+    <string name="unit2_lesson5_quiz_question3_text">3. How does the price of a good or service change with the quantity demanded?</string>
+    <string name="unit2_lesson5_quiz_question3_option1">As the quantity demanded increases, the price decreases</string>
+    <string name="unit2_lesson5_quiz_question3_option2">As the quantity demanded increases, the price increases</string>
+    <string name="unit2_lesson5_quiz_question4_text">4. How does the price of a good or service change with the quantity supplied?</string>
+    <string name="unit2_lesson5_quiz_question4_option1">As the quantity supplied increases, the price decreases</string>
+    <string name="unit2_lesson5_quiz_question4_option2">As the quantity supplied increases, the price increases</string>
+    <string name="unit2_lesson5_quiz_question5_text">5. What is true about the supply curve and demand curve?</string>
+    <string name="unit2_lesson5_quiz_question5_option1">Both the supply curve and the demand curve slope upward</string>
+    <string name="unit2_lesson5_quiz_question5_option2">The supply curve and demand curve describe the relationship between the quantity supplied vs. the quantity demanded</string>
+    <string name="unit2_lesson5_quiz_question5_option3">Both the supply curve and the demand curve slope downward</string>
+    <string name="unit2_lesson5_quiz_question5_option4">The supply curve and demand curve explains how the price level affects the quantity supplied or demanded</string>
+    <string name="submit">Submit</string>
+    <string name="return_to_home">Return to Home</string>
+    <string name="results">%1$d out of %2$d</string>
 </resources>

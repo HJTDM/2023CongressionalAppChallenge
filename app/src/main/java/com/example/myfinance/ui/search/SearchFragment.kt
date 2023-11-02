@@ -1,5 +1,6 @@
 package com.example.myfinance.ui.search
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +10,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.myfinance.databinding.FragmentSearchBinding
+import com.example.myfinance.ui.lessons.unit2.lesson5.Unit2Lesson5Activity
+import com.example.myfinance.ui.tools.interest.InterestCalculatorActivity
 
 class SearchFragment : Fragment() {
 
@@ -69,7 +72,11 @@ class SearchFragment : Fragment() {
         }
         binding.unit1RecyclerView.layoutManager = LinearLayoutManager(this.context)
 
-        val unit2Adapter = SearchListAdapter{}
+        val unit2Adapter = SearchListAdapter{
+            val intent = Intent(activity, Unit2Lesson5Activity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP)
+            startActivity(intent)
+        }
         binding.unit2RecyclerView.adapter = unit2Adapter
         searchViewModel.unit2Lessons.observe(this.viewLifecycleOwner){ lessons ->
             lessons.let{

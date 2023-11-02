@@ -12,4 +12,10 @@ class ProfileViewModel : ViewModel() {
 
     private val _userEmail = MutableLiveData<String?>(auth.currentUser?.email)
     val userEmail: LiveData<String?> = _userEmail
+
+    val points = MutableLiveData<Int>(0)
+
+    fun updatePoints(p: Int){
+        points.value = p
+    }
 }
