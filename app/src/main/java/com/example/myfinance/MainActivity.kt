@@ -10,7 +10,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.myfinance.data.BudgetItem
 import com.example.myfinance.databinding.ActivityMainBinding
-import com.example.myfinance.ui.profile.OnDataPass
+import com.example.myfinance.ui.profile.FragmentToActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
@@ -22,7 +22,7 @@ import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.database
 
 
-class MainActivity : AppCompatActivity(), OnDataPass {
+class MainActivity : AppCompatActivity(), FragmentToActivity {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var signInIntent: Intent
@@ -32,11 +32,13 @@ class MainActivity : AppCompatActivity(), OnDataPass {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        // Inflate binding
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         val navView: BottomNavigationView = binding.navView
 
+        // Configure fragment container and navigation for 4 main tabs
         val navHostFragment = supportFragmentManager.findFragmentById(
             R.id.nav_host_fragment_activity_main
         ) as NavHostFragment
@@ -49,6 +51,7 @@ class MainActivity : AppCompatActivity(), OnDataPass {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
 
+        // Hide action bar
         if (supportActionBar != null) {
             supportActionBar!!.hide()
         }
@@ -56,6 +59,7 @@ class MainActivity : AppCompatActivity(), OnDataPass {
         auth = Firebase.auth
         userDatabase = auth.currentUser?.let { Firebase.database.reference.child("users").child(it.uid) }!!
 
+        // Initialize all lesson points to zero
         userDatabase.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (!snapshot.hasChild("lessons/unit2/lesson5")) {
@@ -66,13 +70,15 @@ class MainActivity : AppCompatActivity(), OnDataPass {
             override fun onCancelled(error: DatabaseError) {}
         })
 
+        // Go back to sign in if no current user
         val currentUser = auth.currentUser
         if (currentUser == null) {
             launchSignInActivity()
         }
     }
 
-    override fun onDataPass(data: String) {
+    // Sign out and launch sign in activity
+    override fun endActivity() {
         Firebase.auth.signOut()
         launchSignInActivity()
     }
@@ -82,6 +88,4 @@ class MainActivity : AppCompatActivity(), OnDataPass {
         startActivity(signInIntent)
         finish()
     }
-
-
 }

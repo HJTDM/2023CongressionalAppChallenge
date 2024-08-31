@@ -13,10 +13,12 @@ class ToolsListAdapter(private val onItemClicked: (Tool) -> Unit)
 
     private val list = DataSource.tools
 
+    // View holder for each tool item
     class ToolViewHolder(private var binding: ItemToolsItemBinding)
         : RecyclerView.ViewHolder(binding.root) {
         fun bind(tool: Tool) {
             binding.apply{
+                // Set image and name of tool item
                 toolImage.setImageResource(tool.imageResourceId)
                 toolName.text = tool.name
             }
@@ -34,10 +36,15 @@ class ToolsListAdapter(private val onItemClicked: (Tool) -> Unit)
     }
 
     override fun onBindViewHolder(holder: ToolViewHolder, position: Int) {
+        // Get tool item in list
         val tool = list[position]
+
+        // Set method called when tool item is clicked
         holder.itemView.setOnClickListener{
             onItemClicked(tool)
         }
+
+        // Bind UI components to budget item
         holder.bind(tool)
     }
 }

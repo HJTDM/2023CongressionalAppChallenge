@@ -19,21 +19,16 @@ class SignInActivity : AppCompatActivity() {
     private lateinit var registerIntent: Intent
     private lateinit var auth: FirebaseAuth
 
-    public override fun onStart() {
-        super.onStart()
-        val currentUser = auth.currentUser
-        if (currentUser != null) {
-            launchMainActivity()
-        }
-    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        // Inflate binding
         binding = ActivitySignInBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         auth = Firebase.auth
 
+        // Bind buttons to methods
         binding.signInButton.setOnClickListener{
             signInUser()
         }
@@ -42,16 +37,29 @@ class SignInActivity : AppCompatActivity() {
             launchRegisterActivity()
         }
 
+        // Hide top action bar
         if (supportActionBar != null) {
             supportActionBar!!.hide()
         }
     }
 
+    public override fun onStart() {
+        super.onStart()
+        val currentUser = auth.currentUser
+
+        // Launch main activity if user has logged in before
+        if (currentUser != null) {
+            launchMainActivity()
+        }
+    }
+
     private fun signInUser(){
+        // Make loading icon visible
         binding.signInProgressBar.visibility = View.VISIBLE
         val email = binding.loginEmailEditText.text.toString()
         val password = binding.loginPasswordEditText.text.toString()
 
+        // Check if email or password is empty
         if(TextUtils.isEmpty(email)){
             Toast.makeText(this, "Enter email", Toast.LENGTH_SHORT).show()
             binding.signInProgressBar.visibility = View.GONE
@@ -63,14 +71,17 @@ class SignInActivity : AppCompatActivity() {
             return
         }
 
+        // Attempt sign in and launch main activity if successful
         auth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
+                    // Hide loading icon
                     binding.signInProgressBar.visibility = View.GONE
                     Toast.makeText(this, "Sign In Successful.", Toast.LENGTH_SHORT).show()
 
                     launchMainActivity()
                 } else {
+                    // Hide loading icon
                     binding.signInProgressBar.visibility = View.GONE
                     Toast.makeText(this, "Authentication failed.", Toast.LENGTH_SHORT).show()
                 }

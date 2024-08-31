@@ -12,7 +12,6 @@ import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.database
 import java.text.NumberFormat
 
-
 class BudgetViewModel : ViewModel() {
     private val auth = Firebase.auth
     private val budgetDatabase = auth.currentUser?.let {
@@ -41,10 +40,15 @@ class BudgetViewModel : ViewModel() {
         allIncomeItems.value = incomeItems
     }
 
-    private fun initializeallItems(){
+    init{
+        initializeAllItems()
+    }
+
+    private fun initializeAllItems(){
         budgetDatabase.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 if(dataSnapshot.exists()){
+                    // Initialize expenses items list (with items already in database)
                     val expensesItems = mutableListOf<BudgetItem>()
                     for(snapshot in dataSnapshot.child("expenses").children){
                         if(snapshot.getValue(BudgetItem::class.java)?.name?.isNotBlank() == true) {
@@ -56,6 +60,7 @@ class BudgetViewModel : ViewModel() {
                         }
                     }
 
+                    // Initialize income items list (with items already in database)
                     val incomeItems = mutableListOf<BudgetItem>()
                     for(snapshot in dataSnapshot.child("income").children){
                         if(snapshot.getValue(BudgetItem::class.java)?.name?.isNotBlank() == true) {
@@ -69,11 +74,14 @@ class BudgetViewModel : ViewModel() {
 
                     updateExpensesItems(expensesItems)
                     updateIncomeItems(incomeItems)
+                    // Calculate total balance
                     setTotalBalance()
 
+                    // Set budget amount to 0 or the current value if present in database
                     var budgetAmount = dataSnapshot.child("budgetAmount").getValue(Double::class.java)
                     budgetAmount = budgetAmount ?: 0.0
                     setBudgetAmount(budgetAmount.toString())
+                    // Calculates expenses and also displays amount spent in budget
                     setTotalExpenses()
                 }
             }
@@ -81,6 +89,8 @@ class BudgetViewModel : ViewModel() {
             override fun onCancelled(databaseError: DatabaseError) {}
         })
     }
+
+    // Calculate and format the total balance (income - expenses)
     fun setTotalBalance(){
         var total = 0.0
         for(budgetItem in allExpensesItems.value!!){
@@ -97,6 +107,7 @@ class BudgetViewModel : ViewModel() {
         return NumberFormat.getCurrencyInstance().format(totalBalance.value)
     }
 
+    // Calculate the total expenses
     fun setTotalExpenses(){
         var expenses = 0.0
         for(budgetItem in allExpensesItems.value!!){
@@ -111,6 +122,7 @@ class BudgetViewModel : ViewModel() {
         )
     }
 
+    // Returns a new budget item with name and price
     private fun getNewBudgetItemEntry(itemName: String, itemPrice: String) : BudgetItem {
         return BudgetItem(
             name = itemName,
@@ -118,31 +130,31 @@ class BudgetViewModel : ViewModel() {
         )
     }
 
+    // Adds a new budget item to the database
     fun addNewBudgetItem(budgetItemOption: String, budgetItemName: String, budgetItemPrice: String){
         if(budgetItemOption == "expenses"){
             val newItem = getNewBudgetItemEntry(budgetItemName, budgetItemPrice)
+            // Uses push() for an auto generated entry
             budgetDatabase.child("expenses").push().setValue(newItem)
         }
         else {
             val newItem = getNewBudgetItemEntry(budgetItemName, budgetItemPrice)
+            // Uses push() for an auto generated entry
             budgetDatabase.child("income").push().setValue(newItem)
         }
     }
 
+    // Checks if budget item is valid (not blank)
     fun isEntryValid(budgetItemName: String, budgetItemPrice: String): Boolean{
-        if(budgetItemName.isBlank() || budgetItemPrice.isBlank()){
-            return false
-        }
-        return true
+        return !(budgetItemName.isBlank() || budgetItemPrice.isBlank())
     }
 
+    // Checks if budget amount is valid (not blank)
     fun isBudgetAmountValid(budgetAmount: String): Boolean{
-        if(budgetAmount.isBlank()){
-            return false
-        }
-        return true
+        return budgetAmount.isNotBlank()
     }
 
+    // Set budget amount in database and update progress and amount left
     fun setBudgetAmount(budgetAmount: String){
         budgetDatabase.child("budgetAmount").setValue(budgetAmount.toDouble())
         _budgetAmount.value = budgetAmount.toDouble()
@@ -152,34 +164,5 @@ class BudgetViewModel : ViewModel() {
         ) + " spent out of " + NumberFormat.getCurrencyInstance().format(
             _budgetAmount.value
         )
-    }
-//
-//    fun retrieveItem(id: Int): LiveData<Item> {
-//        return itemDao.getItem(id).asLiveData()
-//    }
-//
-//    private fun updateItem(item: Item) {
-//        viewModelScope.launch {
-//            itemDao.update(item)
-//        }
-//    }
-//
-//    fun deleteItem(item: Item){
-//        viewModelScope.launch{
-//            itemDao.delete(item)
-//        }
-//    }
-//
-//    fun updateItem(
-//        itemId: Int,
-//        itemName: String,
-//        itemPrice: String,
-//        itemCount: String
-//    ) {
-//        val updatedItem = getUpdatedItemEntry(itemId, itemName, itemPrice, itemCount)
-//        updateItem(updatedItem)
-//    }
-    init{
-        initializeallItems()
     }
 }

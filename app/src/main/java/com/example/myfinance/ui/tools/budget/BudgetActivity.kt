@@ -15,12 +15,15 @@ class BudgetActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(com.example.myfinance.R.layout.activity_budget)
 
+        // Configure fragment container and navigation
         val navHostFragment = supportFragmentManager
             .findFragmentById(com.example.myfinance.R.id.nav_host_fragment_activity_budget) as NavHostFragment
         navController = navHostFragment.navController
 
         setupActionBarWithNavController(navController)
     }
+
+    // Allows for backwards navigation
     override fun onSupportNavigateUp(): Boolean {
         onBackPressedDispatcher.onBackPressed()
         return navController.navigateUp() || super.onSupportNavigateUp()

@@ -23,20 +23,15 @@ class RegisterActivity : AppCompatActivity() {
     private lateinit var signInIntent: Intent
     private lateinit var mainIntent: Intent
 
-    public override fun onStart() {
-        super.onStart()
-        val currentUser = auth.currentUser
-        if (currentUser != null) {
-            launchMainActivity()
-        }
-    }
     override fun onCreate(savedInstanceState: Bundle?) {
+        // Inflate binding
         super.onCreate(savedInstanceState)
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
         auth = Firebase.auth
         database = Firebase.database.reference
 
+        // Bind buttons to methods
         binding.registerButton.setOnClickListener{
             registerNewUser()
         }
@@ -45,17 +40,31 @@ class RegisterActivity : AppCompatActivity() {
             launchSignInActivity()
         }
 
+        // Hide action bar
         if (supportActionBar != null) {
             supportActionBar!!.hide()
         }
     }
 
+    public override fun onStart() {
+        super.onStart()
+        val currentUser = auth.currentUser
+
+        // Launch main activity is user has logged in before
+        if (currentUser != null) {
+            launchMainActivity()
+        }
+    }
+
     private fun registerNewUser(){
+        // Make loading icon visible
         binding.registerProgressBar.visibility = View.VISIBLE
+        // Get entered credentials from text boxes
         val username = binding.registerUsernameEditText.text.toString()
         val email = binding.registerEmailEditText.text.toString()
         val password = binding.registerPasswordEditText.text.toString()
 
+        // Check if any field is empty
         if(TextUtils.isEmpty(email)){
             Toast.makeText(this, "Enter email", Toast.LENGTH_SHORT).show()
             binding.registerProgressBar.visibility = View.GONE
@@ -67,16 +76,19 @@ class RegisterActivity : AppCompatActivity() {
             return
         }
 
+        // Create user and launch main activity if successful
         auth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     binding.registerProgressBar.visibility = View.GONE
 
+                    // Add username and email to database
                     auth.currentUser?.let {
                         val user = User(username, email)
                         database.child("users").child(it.uid).setValue(user)
                     }
 
+                    // Go back to sign in activity
                     launchSignInActivity()
                 } else {
                     binding.registerProgressBar.visibility = View.GONE
@@ -88,6 +100,7 @@ class RegisterActivity : AppCompatActivity() {
                 }
             }
     }
+
     private fun launchSignInActivity(){
         signInIntent = Intent(this, SignInActivity::class.java)
         startActivity(signInIntent)

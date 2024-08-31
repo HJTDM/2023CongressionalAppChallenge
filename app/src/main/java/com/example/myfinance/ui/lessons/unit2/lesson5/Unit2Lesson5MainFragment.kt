@@ -20,13 +20,10 @@ class Unit2Lesson5MainFragment : Fragment() {
     private var _binding: FragmentUnit2Lesson5MainBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var auth: FirebaseAuth
-    private lateinit var userDatabase: DatabaseReference
-    private lateinit var budgetDatabase: DatabaseReference
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        // Make back button finish activity from this fragment
         val callback: OnBackPressedCallback =
             object : OnBackPressedCallback(true ) {
                 override fun handleOnBackPressed() {
@@ -35,19 +32,22 @@ class Unit2Lesson5MainFragment : Fragment() {
             }
         requireActivity().onBackPressedDispatcher.addCallback(this, callback)
     }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        // Inflate binding
         _binding = FragmentUnit2Lesson5MainBinding.inflate(inflater, container, false)
-        (activity as Unit2Lesson5Activity?)?.supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // Set assessment button to navigate to quiz fragment
         binding.assessmentButton.setOnClickListener{
             val action = Unit2Lesson5MainFragmentDirections.actionUnit2Lesson5MainFragmentToUnit2Lesson5QuizFragment()
             this.findNavController().navigate(action)

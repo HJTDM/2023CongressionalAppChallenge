@@ -15,20 +15,17 @@ import com.example.myfinance.databinding.FragmentAddBudgetItemBinding
 
 class AddBudgetItemFragment : Fragment() {
 
-//    private val navigationArgs: ItemDetailFragmentArgs by navArgs()
-
     private var _binding: FragmentAddBudgetItemBinding? = null
     private val binding get() = _binding!!
 
     private val viewModel: BudgetViewModel by activityViewModels()
-
-    lateinit var budgetItem: BudgetItem
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        // Inflate binding
         _binding = FragmentAddBudgetItemBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -36,18 +33,10 @@ class AddBudgetItemFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-//        val id = navigationArgs.itemId
-//        if(id > 0){
-//            viewModel.retrieveItem(id).observe(this.viewLifecycleOwner){selectedItem ->
-//                item = selectedItem
-//                bind(item)
-//            }
-//        }
-//        else{
-            binding.saveAction.setOnClickListener{
-                addNewItem()
-            }
-//        }
+        // Add new item when save button is clicked
+        binding.saveAction.setOnClickListener{
+            addNewItem()
+        }
     }
 
     /**
@@ -55,13 +44,14 @@ class AddBudgetItemFragment : Fragment() {
      */
     override fun onDestroyView() {
         super.onDestroyView()
-        // Hide keyboard.
+        // Hide keyboard if item is saved or back button clicked when keyboard is up
         val inputMethodManager = requireActivity().getSystemService(INPUT_METHOD_SERVICE) as
                 InputMethodManager
         inputMethodManager.hideSoftInputFromWindow(requireActivity().currentFocus?.windowToken, 0)
         _binding = null
     }
 
+    // Check if budget item entry is valid (not blank)
     private fun isEntryValid(): Boolean{
         return viewModel.isEntryValid(
             binding.itemName.text.toString(),
@@ -70,6 +60,7 @@ class AddBudgetItemFragment : Fragment() {
     }
 
     private fun addNewItem(){
+        // Add budget item if valid
         if(isEntryValid()){
             val budgetItemOption = when (binding.budgetItemOptions.checkedRadioButtonId) {
                 R.id.option_expenses -> "expenses"
@@ -87,29 +78,4 @@ class AddBudgetItemFragment : Fragment() {
         val action = AddBudgetItemFragmentDirections.actionAddBudgetItemFragmentToBudgetListFragment()
         findNavController().navigate(action)
     }
-//
-//    private fun bind(item: Item){
-//        val price = "%.2f".format(item.itemPrice)
-//        binding.apply {
-//            itemName.setText(item.itemName, TextView.BufferType.SPANNABLE)
-//            itemPrice.setText(price, TextView.BufferType.SPANNABLE)
-//            itemCount.setText(item.quantityInStock.toString(), TextView.BufferType.SPANNABLE)
-//            saveAction.setOnClickListener{
-//                updateItem()
-//            }
-//        }
-//    }
-//
-//    private fun updateItem(){
-//        if(isEntryValid()){
-//            viewModel.updateItem(
-//                this.navigationArgs.itemId,
-//                this.binding.itemName.text.toString(),
-//                this.binding.itemPrice.text.toString(),
-//                this.binding.itemCount.text.toString()
-//            )
-//            val action = AddItemFragmentDirections.actionAddItemFragmentToItemListFragment()
-//            findNavController().navigate(action)
-//        }
-//    }
 }

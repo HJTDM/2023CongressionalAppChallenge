@@ -22,7 +22,7 @@ class ProfileFragment : Fragment() {
     private var _binding: FragmentProfileBinding? = null
     private val binding get() = _binding!!
     private val profileViewModel: ProfileViewModel by viewModels()
-    private lateinit var dataPasser: OnDataPass
+    private lateinit var fragmentToActivity: FragmentToActivity
 
     private lateinit var auth: FirebaseAuth
     private lateinit var userDatabase: DatabaseReference
@@ -32,12 +32,15 @@ class ProfileFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        // Inflate binding
         _binding = FragmentProfileBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        // Set up data binding (with LiveData)
         binding.apply {
             lifecycleOwner = viewLifecycleOwner
             viewModel = profileViewModel
@@ -47,6 +50,7 @@ class ProfileFragment : Fragment() {
         auth = Firebase.auth
         userDatabase = auth.currentUser?.let { Firebase.database.reference.child("users").child(it.uid) }!!
 
+        // Get and display username from database
         userDatabase.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()) {
@@ -58,6 +62,8 @@ class ProfileFragment : Fragment() {
             override fun onCancelled(error: DatabaseError) {}
         })
 
+        // Get and display points from database
+        // TODO: use for loop to sum up total points from multiple lessons
         userDatabase.child("lessons").child("unit2").child("lesson5")
             .addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -80,18 +86,16 @@ class ProfileFragment : Fragment() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        dataPasser = context as OnDataPass
+        fragmentToActivity = context as FragmentToActivity
     }
 
+    // End main activity to sign out user
     fun signOutUser(){
-        passData("signOut")
-    }
-
-    private fun passData(data: String){
-        dataPasser.onDataPass(data)
+        fragmentToActivity.endActivity()
     }
 }
 
-interface OnDataPass {
-    fun onDataPass(data: String)
+// An interface to communicate from fragment to activity
+interface FragmentToActivity {
+    fun endActivity()
 }

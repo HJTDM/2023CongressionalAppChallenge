@@ -24,28 +24,18 @@ class Unit2Lesson5QuizFragment : Fragment() {
 
     private lateinit var auth: FirebaseAuth
     private lateinit var userDatabase: DatabaseReference
-    private lateinit var budgetDatabase: DatabaseReference
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        val callback: OnBackPressedCallback =
-            object : OnBackPressedCallback(true ) {
-                override fun handleOnBackPressed() {
-                    activity?.finish()
-                }
-            }
-        requireActivity().onBackPressedDispatcher.addCallback(this, callback)
-    }
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
+        // Inflate binding
         _binding = FragmentUnit2Lesson5QuizBinding.inflate(inflater, container, false)
+        // Hide results and home button
         binding.results.visibility = View.GONE
         binding.returnToHomeButton.visibility = View.GONE
-        (activity as Unit2Lesson5Activity?)?.supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
         return binding.root
     }
 
@@ -55,6 +45,7 @@ class Unit2Lesson5QuizFragment : Fragment() {
         auth = Firebase.auth
         userDatabase = auth.currentUser?.let { Firebase.database.reference.child("users").child(it.uid) }!!
 
+        // Bind buttons to methods
         binding.submitButton.setOnClickListener{
             displayCorrectAnswers()
         }
@@ -64,7 +55,8 @@ class Unit2Lesson5QuizFragment : Fragment() {
         }
     }
 
-    fun displayCorrectAnswers(){
+    private fun displayCorrectAnswers(){
+        // Return if not all questions are answered
         if(binding.question1Options.checkedRadioButtonId == View.NO_ID ||
             binding.question2Options.checkedRadioButtonId == View.NO_ID ||
             binding.question3Options.checkedRadioButtonId == View.NO_ID ||
@@ -74,6 +66,7 @@ class Unit2Lesson5QuizFragment : Fragment() {
             return
         }
 
+        // Check answers and adjust score
         var score = 0
         if(binding.question1Options.checkedRadioButtonId == R.id.question_1_option_3){
             score++
@@ -91,10 +84,12 @@ class Unit2Lesson5QuizFragment : Fragment() {
             score++
         }
 
+        // Display results
         binding.results.text = getString(R.string.results, score, 5)
         binding.results.visibility = View.VISIBLE
         binding.returnToHomeButton.visibility = View.VISIBLE
 
+        // Update score for lesson in database
         userDatabase.child("lessons").child("unit2").child("lesson5").setValue(score)
     }
 }

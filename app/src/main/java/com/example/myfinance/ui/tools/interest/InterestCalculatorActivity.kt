@@ -8,6 +8,7 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.SeekBar
 import android.widget.SeekBar.OnSeekBarChangeListener
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myfinance.R
 import com.example.myfinance.databinding.ActivityInterestCalculatorBinding
@@ -24,9 +25,11 @@ class InterestCalculatorActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        // Inflate binding
         binding = ActivityInterestCalculatorBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // Update interest rate text when seek bar changes
         binding.interestRateSeekbar.setOnSeekBarChangeListener(object : OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
                 binding.interestRateSubtitle.text = getString(R.string.interest_rate_percent, progress.toString())
@@ -37,6 +40,7 @@ class InterestCalculatorActivity : AppCompatActivity() {
             override fun onStopTrackingTouch(seekBar: SeekBar?) {}
         })
 
+        // Creates and sets drop down for compound interest time frames
         ArrayAdapter.createFromResource(
             this,
             R.array.compounded_array,
@@ -45,10 +49,12 @@ class InterestCalculatorActivity : AppCompatActivity() {
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
             binding.compoundedSpinner.adapter = adapter
             binding.compoundedSpinner.setSelection(adapter.getPosition("Annually"))
+            // Compound interest option is hidden by default
             binding.compoundFrequencySubtitle.visibility = View.GONE
             binding.compoundedSpinner.visibility = View.GONE
         }
 
+        // Updates variables when selecting a compound interest time frame
         binding.compoundedSpinner.onItemSelectedListener = object: AdapterView.OnItemSelectedListener {
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
                 when (binding.compoundedSpinner.getItemAtPosition(p2).toString()) {
@@ -82,11 +88,13 @@ class InterestCalculatorActivity : AppCompatActivity() {
             override fun onNothingSelected(p0: AdapterView<*>?) {}
         }
 
+        // Selecting simple interest hides compound interest dropdown
         binding.optionSimple.setOnClickListener{
             binding.compoundFrequencySubtitle.visibility = View.GONE
             binding.compoundedSpinner.visibility = View.GONE
         }
 
+        // Selecting compound interest shows compound interest dropdown
         binding.optionCompound.setOnClickListener {
             binding.compoundFrequencySubtitle.visibility = View.VISIBLE
             binding.compoundedSpinner.visibility = View.VISIBLE
@@ -96,13 +104,19 @@ class InterestCalculatorActivity : AppCompatActivity() {
             calculateCompoundInterest()
         }
 
+        // Allow for navigating back
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
-
     private fun calculateCompoundInterest() {
+        // Return if principal amount and time fields are empty
         if(binding.principalAmount.text.toString().isEmpty()
             || binding.investmentTime.text.toString().isEmpty()){
+            Toast.makeText(
+                this,
+                "Please enter a principal amount and investment time",
+                Toast.LENGTH_SHORT
+            ).show()
             return
         }
 
@@ -116,6 +130,7 @@ class InterestCalculatorActivity : AppCompatActivity() {
                 total = principal + (principal * interestRate * time)
             }
             R.id.option_compound -> {
+                // Using variables prevents repetition of the same equation
                 if(continuallyFlag) {
                     total = principal * E.pow(interestRate * time)
                 }
@@ -125,6 +140,7 @@ class InterestCalculatorActivity : AppCompatActivity() {
             }
         }
 
+        // Update final interest and total (interest + principal)
         binding.totalInterest.text = getString(
             R.string.interest_with_value,
             NumberFormat.getCurrencyInstance().format(total - principal)
@@ -135,6 +151,7 @@ class InterestCalculatorActivity : AppCompatActivity() {
         )
     }
 
+    // Finish activity when back button is clicked
     override fun onSupportNavigateUp(): Boolean {
         finish()
         return super.onSupportNavigateUp()

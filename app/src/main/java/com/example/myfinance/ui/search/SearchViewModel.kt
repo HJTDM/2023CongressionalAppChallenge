@@ -33,6 +33,7 @@ class SearchViewModel : ViewModel() {
     val unit6Lessons: LiveData<List<Lesson>> = _unit6Lessons
     val unit6TitleVisibility = MutableLiveData<Int>(0)
 
+    // Update lesson list for each unit based on search keyword
     fun filterLessons(word: String){
         _unit1Lessons.value = DataSource.unit1Lessons.filter {
             it.name.contains(word, true)
@@ -61,6 +62,7 @@ class SearchViewModel : ViewModel() {
         toggleTitleVisibility()
     }
 
+    // Reset lesson lists back to all lessons
     fun resetLessons(){
         _unit1Lessons.value = DataSource.unit1Lessons
         _unit2Lessons.value = DataSource.unit2Lessons
@@ -71,6 +73,7 @@ class SearchViewModel : ViewModel() {
         toggleTitleVisibility()
     }
 
+    // Hide unit titles if lesson list is empty
     private fun toggleTitleVisibility(){
         unit1TitleVisibility.value = if (_unit1Lessons.value.isNullOrEmpty()) View.GONE else View.VISIBLE
         unit2TitleVisibility.value = if (_unit2Lessons.value.isNullOrEmpty()) View.GONE else View.VISIBLE

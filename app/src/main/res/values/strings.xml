@@ -21,13 +21,6 @@
     <string name="unit_5">Unit 5: Investing</string>
     <string name="unit_6">Unit 6: Personal Finance</string>
     <string name="title_activity_interest">Interest Calculator</string>
-    <string-array name="compounded_array">
-        <item>Annually</item>
-        <item>Monthly</item>
-        <item>Weekly</item>
-        <item>Daily</item>
-        <item>Continually</item>
-    </string-array>
     <string name="total_balance">Total Balance</string>
     <string name="total_budget">Total Budget</string>
     <string name="expenses">Expenses</string>
@@ -53,8 +46,77 @@
     <string name="simple">Simple</string>
     <string name="compound">Compound</string>
     <string name="interest_with_value">Interest: %1$s</string>
+    <string name="tax_with_value">Tax: %1$s</string>
     <string name="total_with_value">Total: %1$s</string>
     <string name="piggy_bankers">Piggy Bankers</string>
+    <string name="submit">Submit</string>
+    <string name="return_to_home">Return to Home</string>
+    <string name="results">%1$d out of %2$d</string>
+    <string name="sales_tax_rate">Sales Tax Rate</string>
+    <string name="state">State:</string>
+    <string name="tax">Tax:</string>
+    <string name="default_tax_rate">4.00</string>
+
+    <string-array name="compounded_array">
+        <item>Annually</item>
+        <item>Monthly</item>
+        <item>Weekly</item>
+        <item>Daily</item>
+        <item>Continually</item>
+    </string-array>
+
+    <string-array name="states_array">
+        <item>Alabama</item>
+        <item>Alaska</item>
+        <item>Arizona</item>
+        <item>Arkansas</item>
+        <item>California</item>
+        <item>Colorado</item>
+        <item>Connecticut</item>
+        <item>Delaware</item>
+        <item>Florida</item>
+        <item>Georgia</item>
+        <item>Hawaii</item>
+        <item>Idaho</item>
+        <item>Illinois</item>
+        <item>Indiana</item>
+        <item>Iowa</item>
+        <item>Kansas</item>
+        <item>Kentucky</item>
+        <item>Louisiana</item>
+        <item>Maine</item>
+        <item>Maryland</item>
+        <item>Massachusetts</item>
+        <item>Michigan</item>
+        <item>Minnesota</item>
+        <item>Mississippi</item>
+        <item>Missouri</item>
+        <item>Montana</item>
+        <item>Nebraska</item>
+        <item>Nevada</item>
+        <item>New Hampshire</item>
+        <item>New Jersey</item>
+        <item>New Mexico</item>
+        <item>New York</item>
+        <item>North Carolina</item>
+        <item>North Dakota</item>
+        <item>Ohio</item>
+        <item>Oklahoma</item>
+        <item>Oregon</item>
+        <item>Pennsylvania</item>
+        <item>Rhode Island</item>
+        <item>South Carolina</item>
+        <item>South Dakota</item>
+        <item>Tennessee</item>
+        <item>Texas</item>
+        <item>Utah</item>
+        <item>Vermont</item>
+        <item>Virginia</item>
+        <item>Washington</item>
+        <item>West Virginia</item>
+        <item>Wisconsin</item>
+        <item>Wyoming</item>
+    </string-array>
 
     <string name="unit2_lesson5_part1">
         In our world, there are buyers and sellers of various goods and services; these people make up an overall <i>market</i>, a group of producers and consumers who exchange goods and services using a form of payment. More specifically, the market in the United States is a <b>competitive market</b>, where there are multiple buyers and sellers for the same good or service. In a competitive market, an individual’s actions usually have little effect on the price of a good or service.\n\nThe <b>supply and demand model</b> can give us a good insight into the behavior of a competitive market. There are five key parts of this model:\n
@@ -113,7 +175,4 @@ The way the market equilibrium changes when the supply curve or demand curve shi
     <string name="unit2_lesson5_quiz_question5_option2">The supply curve and demand curve describe the relationship between the quantity supplied vs. the quantity demanded</string>
     <string name="unit2_lesson5_quiz_question5_option3">Both the supply curve and the demand curve slope downward</string>
     <string name="unit2_lesson5_quiz_question5_option4">The supply curve and demand curve explains how the price level affects the quantity supplied or demanded</string>
-    <string name="submit">Submit</string>
-    <string name="return_to_home">Return to Home</string>
-    <string name="results">%1$d out of %2$d</string>
 </resources>

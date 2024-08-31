@@ -15,6 +15,7 @@ class Unit2Lesson5Activity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_unit2_lesson5)
 
+        // Configure fragment container and navigation
         val navHostFragment = supportFragmentManager
             .findFragmentById(com.example.myfinance.R.id.nav_host_fragment_activity_unit2_lesson5)
                 as NavHostFragment
@@ -22,10 +23,13 @@ class Unit2Lesson5Activity : AppCompatActivity() {
 
         setupActionBarWithNavController(navController)
 
+        // Hide action bar
         if (supportActionBar != null) {
             supportActionBar!!.hide()
         }
     }
+
+    // Allows for backwards navigation
     override fun onSupportNavigateUp(): Boolean {
         onBackPressedDispatcher.onBackPressed()
         return navController.navigateUp() || super.onSupportNavigateUp()

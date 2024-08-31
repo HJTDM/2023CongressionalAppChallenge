@@ -17,6 +17,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        android:paddingTop="@dimen/action_bar_padding"
         app:navGraph="@navigation/budget_navigation" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -22,7 +22,6 @@
         <action
             android:id="@+id/action_unit2Lesson5QuizFragment_to_unit2Lesson5MainFragment"
             app:destination="@id/unit2Lesson5MainFragment"
-            app:popUpTo="@id/unit2Lesson5MainFragment"
-            app:popUpToInclusive="true" />
+            app:popUpTo="@id/unit2Lesson5MainFragment" />
     </fragment>
 </navigation>

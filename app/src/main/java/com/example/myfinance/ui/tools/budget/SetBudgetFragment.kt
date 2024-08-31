@@ -13,8 +13,6 @@ import com.example.myfinance.databinding.FragmentSetBudgetBinding
 
 class SetBudgetFragment : Fragment() {
 
-//    private val navigationArgs: ItemDetailFragmentArgs by navArgs()
-
     private var _binding: FragmentSetBudgetBinding? = null
     private val binding get() = _binding!!
 
@@ -25,6 +23,7 @@ class SetBudgetFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        // Inflate binding
         _binding = FragmentSetBudgetBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -32,6 +31,7 @@ class SetBudgetFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // Set budget amount when save button is clicked
         binding.saveBudgetAction.setOnClickListener{
             setBudgetAmount()
         }
@@ -42,20 +42,23 @@ class SetBudgetFragment : Fragment() {
      */
     override fun onDestroyView() {
         super.onDestroyView()
-        // Hide keyboard.
+        // Hide keyboard if budget is saved or back button clicked when keyboard is up
         val inputMethodManager = requireActivity().getSystemService(INPUT_METHOD_SERVICE) as
                 InputMethodManager
         inputMethodManager.hideSoftInputFromWindow(requireActivity().currentFocus?.windowToken, 0)
         _binding = null
     }
 
+    // Check if budget amount is valid (not blank)
     private fun isBudgetAmountValid(): Boolean{
         return viewModel.isBudgetAmountValid(
             binding.budgetAmount.text.toString()
         )
     }
 
+
     private fun setBudgetAmount(){
+        // Set budget amount if valid
         if(isBudgetAmountValid()){
             viewModel.setBudgetAmount(binding.budgetAmount.text.toString())
         }

@@ -1,6 +1,11 @@
 package com.example.myfinance.data
 
 import com.example.myfinance.R
+
+/**
+ * Object (like a singleton) that contains data (images and titles)
+ * for the tool and lesson cards
+ */
 object DataSource {
 
     val tools: List<Tool> = listOf(
@@ -186,5 +191,58 @@ object DataSource {
             R.drawable.tool_stock_market,
             "Lesson 4: Retirement"
         )
+    )
+
+    val stateSalesTaxes: Map<String, Double> = mapOf(
+        "Alabama" to 4.00,
+        "Alaska" to 0.00,
+        "Arizona" to 5.60,
+        "Arkansas" to 6.50,
+        "California" to 7.25,
+        "Colorado" to 2.90,
+        "Connecticut" to 6.35,
+        "Delaware" to 0.00,
+        "Florida" to 6.00,
+        "Georgia" to 4.00,
+        "Hawaii" to 4.00,
+        "Idaho" to 6.00,
+        "Illinois" to 6.25,
+        "Indiana" to 7.00,
+        "Iowa" to 6.00,
+        "Kansas" to 6.50,
+        "Kentucky" to 6.00,
+        "Louisiana" to 4.45,
+        "Maine" to 5.50,
+        "Maryland" to 6.00,
+        "Massachusetts" to 6.25,
+        "Michigan" to 6.00,
+        "Minnesota" to 6.875,
+        "Mississippi" to 7.00,
+        "Missouri" to 4.225,
+        "Montana" to 0.00,
+        "Nebraska" to 5.50,
+        "Nevada" to 6.85,
+        "New Hampshire" to 0.00,
+        "New Jersey" to 6.625,
+        "New Mexico" to 4.875,
+        "New York" to 4.00,
+        "North Carolina" to 4.75,
+        "North Dakota" to 5.00,
+        "Ohio" to 5.75,
+        "Oklahoma" to 4.50,
+        "Oregon" to 0.00,
+        "Pennsylvania" to 6.00,
+        "Rhode Island" to 7.00,
+        "South Carolina" to 6.00,
+        "South Dakota" to 4.20,
+        "Tennessee" to 7.00,
+        "Texas" to 6.25,
+        "Utah" to 6.10,
+        "Vermont" to 6.00,
+        "Virginia" to 5.30,
+        "Washington" to 6.50,
+        "West Virginia" to 6.00,
+        "Wisconsin" to 5.00,
+        "Wyoming" to 4.00
     )
 }
